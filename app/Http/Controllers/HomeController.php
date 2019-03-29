@@ -10,7 +10,6 @@ class HomeController extends Controller
         return view('login');
     }
     public function fbLogin(Request $request){
-       var_dump($request);
-       die();
+       return true;
     }
 }
