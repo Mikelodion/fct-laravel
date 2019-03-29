@@ -43,7 +43,7 @@ function testAPI(){
                 birth: response.birthday,
                 photo: response.picture.data.url
             }
-            createUser(user);
+            createUser(JSON.stringify(user));
         }
     });
 }
@@ -52,8 +52,8 @@ const createUser = (user) =>{
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: "POST",
         url: "/fblogin",
-        data: JSON.stringify(user),
-        dataType: "json",
+        data: { _token: CSRF_TOKEN, user},
+        dataType: "JSON",
         success: function (response) {
             console.log("Ha funcionado");
             console.log(response);
