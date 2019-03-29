@@ -13,7 +13,6 @@
 
 Route::group(['prefix'=>''], function (){
     Route::get('/', "HomeController@index");
-    Route::get('/fblogin', "HomeController@fbLogin");
-    
+    Route::post('/fblogin', "HomeController@fbLogin");
 });
 
