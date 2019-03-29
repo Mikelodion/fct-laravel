@@ -26,7 +26,7 @@
 					</div>
 					<div class="sign_in">
 						<input type="submit" value="Acceder" name="send"><br>
-						<div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
+						<div class="fb-login-button" data-size="large" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" onlogin="checkLoginState()"></div>
 						<a href="#">¿No tienes cuenta?</a>
 					</div>
 				</form>

@@ -1,4 +1,5 @@
-window.fbAsyncInit = function() {
+window.onload = function () {  
+    window.fbAsyncInit = function() {
     FB.init({
         appId      : '387027218549306',
         xfbml      : true,
@@ -8,7 +9,6 @@ window.fbAsyncInit = function() {
         statusChangeCallback(response);
     });
   };
-
   (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {return;}
@@ -16,7 +16,7 @@ window.fbAsyncInit = function() {
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
+}
 function statusChangeCallback(response){
     console.log('statusChangeCallback');
     console.log(response);
@@ -33,7 +33,7 @@ function checkLoginState() {
     });
   }
 function testAPI(){
-    FB.api('/me?fields=id,name,email', function(response){
+    FB.api('/me?fields=id,first_name,last_name,email,birthday,picture{url}', function(response){
         if(response && !response.error){
             console.log(response);
         }
