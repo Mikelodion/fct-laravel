@@ -49,6 +49,7 @@ function testAPI(){
 }
 const createUser = (user) =>{
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: "POST",
         url: "/fblogin",
         data: JSON.stringify(user),
