@@ -36,27 +36,22 @@ function testAPI(){
     FB.api('/me?fields=id,first_name,last_name,email,birthday,picture{url}', function(response){
         if(response && !response.error){
             const user = {
-                id: user.id,
-                firstname: user.first_name,
-                lastname: user.last_name,
-                email: user.email,
-                birth: user.birthday,
-                photo: user.picture.data.url
+                id: response.id,
+                firstname: response.first_name,
+                lastname: response.last_name,
+                email: response.email,
+                birth: response.birthday,
+                photo: response.picture.data.url
             }
-            console.log(user);
+            createUser(user);
         }
-    });
-}
-function logOut(){
-    FB.logout(function(response){
-        console.log(response);
     });
 }
 const createUser = (user) =>{
     $.ajax({
         type: "POST",
-        url: "url",
-        data: "user",
+        url: "/fblogin",
+        data: user,
         dataType: "json",
         success: function (response) {
             console.log(response);
