@@ -35,12 +35,34 @@ function checkLoginState() {
 function testAPI(){
     FB.api('/me?fields=id,first_name,last_name,email,birthday,picture{url}', function(response){
         if(response && !response.error){
-            console.log(response);
+            const user = {
+                id: user.id,
+                firstname: user.first_name,
+                lastname: user.last_name,
+                email: user.email,
+                birth: user.birthday,
+                photo: user.picture.data.url
+            }
+            console.log(user);
         }
     });
 }
 function logOut(){
     FB.logout(function(response){
         console.log(response);
+    });
+}
+const createUser = (user) =>{
+    $.ajax({
+        type: "POST",
+        url: "url",
+        data: "user",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {  
+            console.log(response);
+        }
     });
 }
