@@ -10,6 +10,6 @@ class HomeController extends Controller
         return view('login');
     }
     public function fbLogin(Request $request){
-       return true;
+       echo "Dentro";
     }
 }

@@ -51,7 +51,7 @@ const createUser = (user) =>{
     $.ajax({
         type: "POST",
         url: "/fblogin",
-        data: user,
+        data: JSON.stringify(user),
         dataType: "json",
         success: function (response) {
             console.log("Ha funcionado");
