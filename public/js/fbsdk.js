@@ -43,15 +43,15 @@ function testAPI(){
                 birth: response.birthday,
                 photo: response.picture.data.url
             }
-            console.log(user);
+            createUser(user);
         }
     });
 }
 const createUser = (user) =>{
     $.ajax({
         type: "POST",
-        url: "url",
-        data: "user",
+        url: "/insertNewUser",
+        data: user,
         dataType: "json",
         success: function (response) {
             console.log(response);
