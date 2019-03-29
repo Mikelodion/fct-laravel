@@ -50,7 +50,11 @@ function testAPI(){
 const createUser = (user) =>{
     $.ajax({
         type: "POST",
+<<<<<<< HEAD
         url: "/fblogin",
+=======
+        url: "/insertNewUser",
+>>>>>>> c26735d67cba39a52e761ab12c5d0550e2fc8226
         data: user,
         dataType: "json",
         success: function (response) {
