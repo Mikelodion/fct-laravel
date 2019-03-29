@@ -54,10 +54,12 @@ const createUser = (user) =>{
         data: user,
         dataType: "json",
         success: function (response) {
-            console.log(response.message);
+            console.log("Ha funcionado");
+            console.log(response);
         },
-        error: function (response) {  
-            console.log(response.message);
+        error: function (response) { 
+            console.log("No ha funcionado"); 
+            console.log(response);
         }
     });
 }
