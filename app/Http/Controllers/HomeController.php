@@ -11,22 +11,22 @@ class HomeController extends Controller
         return view('login');
     }
     public function fbLogin(Request $request){
-      $user = json_decode($request, true);
-      $findUser = DB::TABLE("user")->where('email','=', $user['email']);
+      $user = $request;
+      $findUser = DB::TABLE("user")->where('email','=', $user->email);
       if ($findUser->first()){
-        return json_encode(array('response'=>'Usuario Encontrado'));
+        return response()->json(['response'=>'Usuario Encontrado']);
       }
       else{
         return $this->createUser($user);
       }
     }
     private function createUser($user){
-      if(empty(DB::TABLE('user') -> insertGetId(["email" => $user['email'],
-                                          "firstname" => $user['firstname'],
-                                          "lastname" => $user['lastname'],
-                                          "birth"=>$user['birth'],
-                                          "photo"=>$user['photo']]))){
-        return json_encode(array('response' =>'Usuario Creado'));
+      if(empty(DB::TABLE('user') -> insertGetId(["email" => $user->email,
+                                          "firstname" => $user->firstname,
+                                          "lastname" => $user->lastname,
+                                          "birth"=>$user->birth,
+                                          "photo"=>$user->photo]))){
+        return response()->json(['response' =>'Usuario Creado']);
       }
     }
 }
