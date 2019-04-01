@@ -35,15 +35,15 @@ function checkLoginState() {
 function testAPI(){
     FB.api('/me?fields=id,first_name,last_name,email,birthday,picture{url}', function(response){
         if(response && !response.error){
-            console.log("testAPI", response);
             const user = {
                 id: response.id,
+                email: response.email,
                 firstname: response.first_name,
                 lastname: response.last_name,
-                email: response.email,
                 birth: response.birthday,
                 photo: response.picture.data.url
             }
+            console.log("testAPI", user);
             checkUser(JSON.stringify(user));
         }
     });

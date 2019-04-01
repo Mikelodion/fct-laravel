@@ -22,7 +22,10 @@ class HomeController extends Controller
     }
     private function createUser($user){
       if(empty(DB::TABLE('user') -> insertGetId(["email" => $user['email'],
-                                          "firstname" => $user['firstname']]))){
+                                          "firstname" => $user['firstname'],
+                                          "lastname" => $user['lastname'],
+                                          "birth"=>$user['birth'],
+                                          "photo"=>$user['photo']]))){
         return json_encode(array('response' =>'Usuario Creado'));
       }
     }
