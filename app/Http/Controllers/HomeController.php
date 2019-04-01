@@ -17,11 +17,12 @@ class HomeController extends Controller
         return json_encode(array('response'=>'Usuario Encontrado'));
       }
       else{
-        return createUser($user);
+        return $this->createUser($user);
       }
     }
     private function createUser($user){
-      if(DB::TABLE('user') -> insertGetId($user)){
+      if(empty(DB::TABLE('user') -> insertGetId(["email" => $user['email'],
+                                          "firstname" => $user['firstname']]))){
         return json_encode(array('response' =>'Usuario Creado'));
       }
     }
