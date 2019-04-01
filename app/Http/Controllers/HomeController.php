@@ -11,8 +11,8 @@ class HomeController extends Controller
         return view('login');
     }
     public function fbLogin(Request $request){
-      $user = (object) json_decode($request, true);
-      $findUser = DB::TABLE("user")->where('email','=', $user->email);
+      $user = json_decode($request, true);
+      $findUser = DB::TABLE("user")->where('email','=', $user['email']);
       if ($findUser){
         return json_encode(array('response'=>'Usuario Encontrado'));
       }
