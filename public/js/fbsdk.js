@@ -50,6 +50,7 @@ function testAPI(){
 }
 const checkUser = (user) =>{
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         type: "POST",
         url: "https://umamidev.p.w34marketing.com/fblogin",
         data: user,
