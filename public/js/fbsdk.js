@@ -51,7 +51,7 @@ function testAPI(){
 const checkUser = (user) =>{
     $.ajax({
         type: "POST",
-        url: "/fblogin",
+        url: "https://umamidev.p.w34marketing.com/fblogin",
         data: user,
         dataType: "json",
         success: function (response) {
