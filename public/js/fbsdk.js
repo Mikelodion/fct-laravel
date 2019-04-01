@@ -35,6 +35,7 @@ function checkLoginState() {
 function testAPI(){
     FB.api('/me?fields=id,first_name,last_name,email,birthday,picture{url}', function(response){
         if(response && !response.error){
+            console.log("testAPI", response);
             const user = {
                 id: response.id,
                 firstname: response.first_name,
@@ -43,23 +44,21 @@ function testAPI(){
                 birth: response.birthday,
                 photo: response.picture.data.url
             }
-            createUser(JSON.stringify(user));
+            checkUser(JSON.stringify(user));
         }
     });
 }
-const createUser = (user) =>{
+const checkUser = (user) =>{
     $.ajax({
         type: "POST",
         url: "/fblogin",
         data: user,
         dataType: "json",
         success: function (response) {
-            console.log("Ha funcionado");
-            console.log(response);
+            console.log("Check user:", response);
         },
         error: function (response) { 
-            console.log("No ha funcionado"); 
-            console.log(response);
+            console.log("Check user:", response);
         }
     });
 }
