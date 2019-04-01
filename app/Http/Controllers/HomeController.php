@@ -13,14 +13,15 @@ class HomeController extends Controller
       $user = (object) json_decode($request, true);
       $findUser = DB::TABLE("user")->where('email','=', $user->email);
       if ($findUser){
-        echo "Usuario encontrado";
+        return json_encode(array('response' =>'Usuario Encontrado'));
       }
       else{
-        createUser($user);
+        return createUser($user);
       }
     }
     private function createUser($user){
-      DB::TABLE('user') -> insertGetId($user);
-      echo "Usuario Creado";
+      if(DB::TABLE('user') -> insertGetId($user)){
+        return json_encode(array('response' =>'Usuario Creado'));
+      }
     }
 }
